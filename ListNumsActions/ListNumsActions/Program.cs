@@ -18,25 +18,55 @@ namespace ListNumsActions
                     break;
                 }
                 switch (command)
-                {
-                    case "ins":
-                        //TODO
-                        break;
-                    case "del":
-                        //TODO
-                        break;
-                    case "contains":
-                        //TODO
-                        break;
-                    case "remove":
-                        //TODO
-                        break;
-                    //TODO
+                { }
+               
 
-                    default:
+                    if (command.ToLower() == "finish")
+                    {
                         break;
+                    }
+
+                    switch (command)
+                    {
+                        case "ins":
+                            {
+                                int index = int.Parse(cmd[1]);
+                                int value = int.Parse(cmd[2]);
+                                if (index >= 0 && index <= nums.Count)
+                                {
+                                    nums.Insert(index, value);
+                                }
+                            }
+                            break;
+
+                        case "del":
+                            {
+                                int index = int.Parse(cmd[1]);
+                                if (index >= 0 && index < nums.Count)
+                                {
+                                    nums.RemoveAt(index);
+                                }
+                            }
+                            break;
+
+                        case "contains":
+                            {
+                                int value = int.Parse(cmd[1]);
+                                Console.WriteLine(nums.Contains(value) ? "Yes" : "No");
+                            }
+                            break;
+
+                            //TODO
+                            break;
+                        case "remove":
+                            //TODO
+                            break;
+                        //TODO
+
+                        default:
+                            break;
+                    }
                 }
             }
         }
-    }
-}
+    } 
