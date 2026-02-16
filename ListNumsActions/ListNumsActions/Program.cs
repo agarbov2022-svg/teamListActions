@@ -18,25 +18,73 @@ namespace ListNumsActions
                     break;
                 }
                 switch (command)
-                {
-                    case "ins":
-                        //TODO
+                { }
+               
+
+                    if (command.ToLower() == "finish")
+                    {
                         break;
-                    case "del":
-                        //TODO
-                        break;
-                    case "contains":
-                        //TODO
-                        break;
+                    }
+
+                    switch (command)
+                    {
+                        case "ins":
+                            {
+                                int index = int.Parse(cmd[1]);
+                                int value = int.Parse(cmd[2]);
+                                if (index >= 0 && index <= nums.Count)
+                                {
+                                    nums.Insert(index, value);
+                                }
+                            }
+                            break;
+
+                        case "del":
+                            {
+                                int index = int.Parse(cmd[1]);
+                                if (index >= 0 && index < nums.Count)
+                                {
+                                    nums.RemoveAt(index);
+                                }
+                            }
+                            break;
+
+                        case "contains":
+                            {
+                                int value = int.Parse(cmd[1]);
+                                Console.WriteLine(nums.Contains(value) ? "Yes" : "No");
+                            }
+                            break;
                     case "remove":
-                        //TODO
+                        {
+                            int index = int.Parse(cmd[1]);
+                            if (index >= 0 && index < nums.Count)
+                            {
+                                nums.RemoveAt(index);
+                            }
+                        }
                         break;
-                    //TODO
+
+                    case "add":
+                        {
+                            int num1 = int.Parse(cmd[1]);
+                            int num2 = int.Parse(cmd[2]);
+                            nums.Add(num1 + num2);
+                        }
+                        break;
+
+                    case "large":
+                        {
+                            int number = int.Parse(cmd[1]);
+                            var result = nums.Where(x => x > number);
+                            Console.WriteLine(string.Join(" ", result));
+                        }
+                        break;
 
                     default:
-                        break;
+                            break;
+                    }
                 }
             }
         }
-    }
-}
+    } 
