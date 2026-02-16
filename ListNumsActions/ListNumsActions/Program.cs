@@ -55,15 +55,33 @@ namespace ListNumsActions
                                 Console.WriteLine(nums.Contains(value) ? "Yes" : "No");
                             }
                             break;
+                    case "remove":
+                        {
+                            int index = int.Parse(cmd[1]);
+                            if (index >= 0 && index < nums.Count)
+                            {
+                                nums.RemoveAt(index);
+                            }
+                        }
+                        break;
 
-                            //TODO
-                            break;
-                        case "remove":
-                            //TODO
-                            break;
-                        //TODO
+                    case "add":
+                        {
+                            int num1 = int.Parse(cmd[1]);
+                            int num2 = int.Parse(cmd[2]);
+                            nums.Add(num1 + num2);
+                        }
+                        break;
 
-                        default:
+                    case "large":
+                        {
+                            int number = int.Parse(cmd[1]);
+                            var result = nums.Where(x => x > number);
+                            Console.WriteLine(string.Join(" ", result));
+                        }
+                        break;
+
+                    default:
                             break;
                     }
                 }
